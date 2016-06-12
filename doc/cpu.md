@@ -21,7 +21,7 @@ Instructions are represented by 1-3 bytes. The number of bytes is determined by 
 | `2-4` | positional opcode |
 | `5-7` | local opcode      |
 
-Bits `0` and `1` of the **operating mode** represent the states of the second and third bytes of an instruction respectively. If bit `1` is set then bit `0` must also be set as this operating mode is reserved.
+Bits `0` and `1` of the **operating mode** represent the states of the second and third bytes of an instruction respectively. If bit `1` is set then bit `0` must also be set, as this operating mode is reserved.
 
 | OPERATING MODE | DESCRIPTION                           |
 | -------------- | ------------------------------------- |
