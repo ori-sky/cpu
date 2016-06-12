@@ -1,5 +1,8 @@
 ### Registers
 
+* scalar registers are 32 bits in width
+* vector registers are comprised of 4 scalar elements
+
 | REGISTERS              | DESCRIPTION                      |
 | ---------------------- | -------------------------------- |
 | `A`, `B`, `C`, `D`     | general-purpose scalar registers |
