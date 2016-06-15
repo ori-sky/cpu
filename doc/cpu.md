@@ -29,3 +29,5 @@ Bits `0` and `1` of the **operating mode** represent the states of the second an
 | `0b10`         | second byte is **used**               |
 | `0b11`         | second and third bytes are **used**   |
 | `0b01`         | reserved                              |
+
+The **positional opcode** represents the category assigned to an instruction. Instructions similar in operation to each other have matching positional opcodes and are distinguished by their local opcode. An instruction can be uniquely identified entirely by its first byte.
