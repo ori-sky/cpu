@@ -31,3 +31,13 @@ Bits `0` and `1` of the **operating mode** represent the states of the second an
 | `0b01`         | reserved                              |
 
 The **positional opcode** represents the category assigned to an instruction. Instructions similar in operation to each other have matching positional opcodes and are distinguished by their **local opcode**. An instruction can be uniquely identified entirely by its first byte.
+
+For brevity, the three portions of the first byte of an instruction are usually shortened to **category**, **opcode**, and **mode**. The following table displays a list of categories and their meanings.
+
+| CATEGORY | DESCRIPTION |
+| -------- | ----------- |
+
+The following table displays a list of instructions and their corresponding components, with a brief description of the function of each instruction.
+
+| MNEMONIC | CATEGORY | OPCODE | MODE | DESCRIPTION |
+| -------- | -------- | ------ | ---- | ----------- |
