@@ -48,13 +48,18 @@ For brevity, the three portions of the first byte of an instruction are usually 
 ###### *Table 5*
 | CHARACTER | DESCRIPTION              |
 | --------- | ------------------------ |
-| `i`       | immediate/constant value |
 | `s`       | scalar register          |
 | `v`       | vector register          |
+| `i`       | immediate/constant value |
 
 ###### *Table 6*
-| MNEMONIC     | CATEGORY | OPCODE | MODE   | DESCRIPTION                   |
-| ------------ | -------- | ------ | ------ | ----------------------------- |
-| `NOP`        | `0x0`    | `0x0`  | `0x00` | no operation                  |
-| `MOV s,  i`  | `0x1`    | `0x1`  | `0x01` | move immediate value into `s` |
-| `MOV s2, s1` | `0x1`    | `0x2`  | `0b11` | move value at `s1` into `s2`  |
+| MNEMONIC        | CATEGORY | OPCODE | MODE   | DESCRIPTION                                      |
+| --------------- | -------- | ------ | ------ | ------------------------------------------------ |
+| `NOP`           | `0x0`    | `0x0`  | `0x00` | no operation                                     |
+| `MOV    s2, s1` | `0x1`    | `0x0`  | `0b11` | move value at `s1` into `s2`                     |
+| `MOV    s,  i`  | `0x1`    | `0x1`  | `0x11` | move immediate value into `s`                    |
+| `VMOV   v2, v1` | `0x1`    | `0x2`  | `0b11` | move value at `v1` into `v2`                     |
+| `VMOVVX v,  s`  | `0x1`    | `0x3`  | `0b11` | move value at `s` into `v` by value-extension    |
+| `VMOVVX v,  i`  | `0x1`    | `0x4`  | `0b11` | move immediate value into `v` by value-extension |
+| `VMOVZX v,  s`  | `0x1`    | `0x5`  | `0b11` | move value at `s` into `v` by zero-extension     |
+| `VMOVZX v,  i`  | `0x1`    | `0x6`  | `0b11` | move immediate value into `v` by zero-extension  |
