@@ -13,13 +13,13 @@
 
 ### Instruction Set
 
-Instructions are represented by 1-3 bytes. The number of bytes is determined by the **operating mode** which is 2 bits in width. The first byte is as follows.
+Instructions are represented by 1-3 bytes. The number of bytes is determined by the **operating mode** which is 2 bits in width. The first byte is as follows. Note that bit `0` refers to the least significant bit and bit `7` refers to the most significant bit.
 
 | BITS  | DESCRIPTION       |
 | ----- | ----------------- |
 | `0-1` | operating mode    |
-| `2-4` | positional opcode |
-| `5-7` | local opcode      |
+| `2-4` | local opcode      |
+| `5-7` | positional opcode |
 
 Bits `0` and `1` of the **operating mode** represent the states of the second and third bytes of an instruction respectively. If bit `1` is set then bit `0` must also be set, as otherwise is reserved behaviour.
 
@@ -30,4 +30,4 @@ Bits `0` and `1` of the **operating mode** represent the states of the second an
 | `0b11`         | second and third bytes are **used**   |
 | `0b01`         | reserved                              |
 
-The **positional opcode** represents the category assigned to an instruction. Instructions similar in operation to each other have matching positional opcodes and are distinguished by their local opcode. An instruction can be uniquely identified entirely by its first byte.
+The **positional opcode** represents the category assigned to an instruction. Instructions similar in operation to each other have matching positional opcodes and are distinguished by their **local opcode**. An instruction can be uniquely identified entirely by its first byte.
