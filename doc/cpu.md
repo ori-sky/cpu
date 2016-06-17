@@ -14,28 +14,17 @@
 
 ### Instruction Set
 
-Instructions are represented by 1-3 bytes. The number of bytes is determined by the **operating mode** which is 2 bits in width. The first byte is as follows. Note that bit `0` refers to the least significant bit and bit `7` refers to the most significant bit. *Table 2* displays the structure of the first byte of an instruction.
+Instructions are represented by 1 or more bytes. The number of bytes is determined by the operands that an instruction takes. The first byte is as follows. Note that bit `0` refers to the least significant bit and bit `7` refers to the most significant bit. *Table 2* displays the structure of the first byte of an instruction.
 
 ###### *Table 2*
 | BITS  | DESCRIPTION       |
 | ----- | ----------------- |
-| `0-1` | operating mode    |
-| `2-4` | local opcode      |
+| `0-4` | local opcode      |
 | `5-7` | positional opcode |
-
-Bits `0` and `1` of the **operating mode** represent the states of the second and third bytes of an instruction respectively. If bit `1` is set then bit `0` must also be set, as otherwise is reserved behaviour. *Table 3* displays the four possible operating modes.
-
-###### *Table 3*
-| OPERATING MODE | DESCRIPTION                           |
-| -------------- | ------------------------------------- |
-| `0b00`         | second and third bytes are **unused** |
-| `0b01`         | second byte is **used**               |
-| `0b11`         | second and third bytes are **used**   |
-| `0b10`         | reserved                              |
 
 The **positional opcode** represents the category assigned to an instruction. Instructions similar in operation to each other have matching positional opcodes and are distinguished by their **local opcode**. An instruction can be uniquely identified entirely by its first byte.
 
-For brevity, the three portions of the first byte of an instruction are usually shortened to **category**, **opcode**, and **mode**. *Table 4* displays a list of categories and their meanings.
+For brevity, the two portions of the first byte of an instruction are usually shortened to **category** and **opcode**. *Table 4* displays a list of categories and their meanings.
 
 ###### *Table 4*
 | CATEGORY | DESCRIPTION |
@@ -53,13 +42,13 @@ For brevity, the three portions of the first byte of an instruction are usually 
 | `i`       | immediate/constant value |
 
 ###### *Table 6*
-| MNEMONIC        | CATEGORY | OPCODE | MODE   | DESCRIPTION                                      |
-| --------------- | -------- | ------ | ------ | ------------------------------------------------ |
-| `NOP`           | `0x0`    | `0x0`  | `0x00` | no operation                                     |
-| `MOV    s2, s1` | `0x1`    | `0x0`  | `0b11` | move value at `s1` into `s2`                     |
-| `MOV    s,  i`  | `0x1`    | `0x1`  | `0x11` | move immediate value into `s`                    |
-| `VMOV   v2, v1` | `0x1`    | `0x2`  | `0b11` | move value at `v1` into `v2`                     |
-| `VMOVVX v,  s`  | `0x1`    | `0x3`  | `0b11` | move value at `s` into `v` by value-extension    |
-| `VMOVVX v,  i`  | `0x1`    | `0x4`  | `0b11` | move immediate value into `v` by value-extension |
-| `VMOVZX v,  s`  | `0x1`    | `0x5`  | `0b11` | move value at `s` into `v` by zero-extension     |
-| `VMOVZX v,  i`  | `0x1`    | `0x6`  | `0b11` | move immediate value into `v` by zero-extension  |
+| MNEMONIC        | CATEGORY | OPCODE | DESCRIPTION                                      |
+| --------------- | -------- | ------ | ------------------------------------------------ |
+| `NOP`           | `0x0`    | `0x0`  | no operation                                     |
+| `MOV    s2, s1` | `0x1`    | `0x0`  | move value at `s1` into `s2`                     |
+| `MOV    s,  i`  | `0x1`    | `0x1`  | move immediate value into `s`                    |
+| `VMOV   v2, v1` | `0x1`    | `0x2`  | move value at `v1` into `v2`                     |
+| `VMOVVX v,  s`  | `0x1`    | `0x3`  | move value at `s` into `v` by value-extension    |
+| `VMOVVX v,  i`  | `0x1`    | `0x4`  | move immediate value into `v` by value-extension |
+| `VMOVZX v,  s`  | `0x1`    | `0x5`  | move value at `s` into `v` by zero-extension     |
+| `VMOVZX v,  i`  | `0x1`    | `0x6`  | move immediate value into `v` by zero-extension  |
