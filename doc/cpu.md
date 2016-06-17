@@ -4,13 +4,13 @@
 * Vector registers are comprised of 4 scalar elements.
 
 ###### *Table 1*
-| REGISTERS              | DESCRIPTION                      |
-| ---------------------- | -------------------------------- |
-| `A`, `B`, `C`, `D`     | general-purpose scalar registers |
-| `V0`, `V1`, `V2`, `V3` | general-purpose vector registers |
-| `X`, `Y`, `Z`, `W`     | scalar elements of `V0`          |
-| `IP`                   | instruction pointer              |
-| `SP`                   | stack pointer                    |
+| REGISTERS              | DESCRIPTION                                     |
+| ---------------------- | ----------------------------------------------- |
+| `A`, `B`, `C`, `D`     | general-purpose scalar registers                |
+| `V0`, `V1`, `V2`, `V3` | general-purpose vector registers                |
+| `X`, `Y`, `Z`, `W`     | scalar elements of the *active vector register* |
+| `IP`                   | instruction pointer                             |
+| `SP`                   | stack pointer                                   |
 
 ### Instruction Set
 
@@ -45,10 +45,14 @@ For brevity, the two portions of the first byte of an instruction are usually sh
 | MNEMONIC        | CATEGORY | OPCODE | DESCRIPTION                                      |
 | --------------- | -------- | ------ | ------------------------------------------------ |
 | `NOP`           | `0x0`    | `0x0`  | no operation                                     |
-| `MOV    s2, s1` | `0x1`    | `0x0`  | move value at `s1` into `s2`                     |
+| `MOV    s1, s0` | `0x1`    | `0x0`  | move value at `s0` into `s1`                     |
 | `MOV    s,  i`  | `0x1`    | `0x1`  | move immediate value into `s`                    |
-| `VMOV   v2, v1` | `0x1`    | `0x2`  | move value at `v1` into `v2`                     |
+| `VMOV   v1, v0` | `0x1`    | `0x2`  | move value at `v0` into `v1`                     |
 | `VMOVVX v,  s`  | `0x1`    | `0x3`  | move value at `s` into `v` by value-extension    |
 | `VMOVVX v,  i`  | `0x1`    | `0x4`  | move immediate value into `v` by value-extension |
 | `VMOVZX v,  s`  | `0x1`    | `0x5`  | move value at `s` into `v` by zero-extension     |
 | `VMOVZX v,  i`  | `0x1`    | `0x6`  | move immediate value into `v` by zero-extension  |
+| `AVR0`          | `0x2`    | `0x0`  | activate vector register 0                       |
+| `AVR1`          | `0x2`    | `0x1`  | activate vector register 1                       |
+| `AVR2`          | `0x2`    | `0x2`  | activate vector register 2                       |
+| `AVR3`          | `0x2`    | `0x3`  | activate vector register 3                       |
