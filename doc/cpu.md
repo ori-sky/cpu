@@ -52,6 +52,8 @@ For brevity, the two portions of the first byte of an instruction are usually sh
 | `VMOVVX v,  i`  | `0x1`    | `0x4`  | move immediate value into `v` by value-extension |
 | `VMOVZX v,  s`  | `0x1`    | `0x5`  | move value at `s` into `v` by zero-extension     |
 | `VMOVZX v,  i`  | `0x1`    | `0x6`  | move immediate value into `v` by zero-extension  |
+| `VMOV1X v,  s`  | `0x1`    | `0x7`  | move value at `s` into `v` by one-extension      |
+| `VMOV1X v,  i`  | `0x1`    | `0x8`  | move immediate value into `v` by one-extension   |
 | `AVR0`          | `0x2`    | `0x0`  | activate vector register 0                       |
 | `AVR1`          | `0x2`    | `0x1`  | activate vector register 1                       |
 | `AVR2`          | `0x2`    | `0x2`  | activate vector register 2                       |
