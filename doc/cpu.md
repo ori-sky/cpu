@@ -1,6 +1,6 @@
 ### Registers
 
-* Scalar registers are 32 bits in width.
+* Scalar registers are 64 bits in width.
 * Vector registers are comprised of 4 scalar elements.
 
 ###### *Table 1*
